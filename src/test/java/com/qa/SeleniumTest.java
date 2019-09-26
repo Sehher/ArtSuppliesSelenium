@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
@@ -29,19 +30,25 @@ public class SeleniumTest {
     }
 
     @Test
-    public void searchTest() throws InterruptedException {
-        driver.get("http://google.com");
-        Thread.sleep(2000); //This keeps the window open for 2 seconds before closing it
-        WebElement searchField = driver.findElement(By.name("q"));
-        assertTrue(searchField.isDisplayed());
-        searchField.sendKeys("funny cat pictures"); //adds text to search field
-        Thread.sleep(5000);
-
-
-
-//        driver.findElement(By.xpath())
-//                driver.findElement(By.cssSelector()) These are for when the element doesn't have an ID
+    public void deleteDisplayTest() throws InterruptedException {
+        driver.get("http://34.89.69.35/index.html");
+        Thread.sleep(1000); //This keeps the window open for 2 seconds before closing it
+        WebElement deleteButton = driver.findElementByXPath("//*[@id=\"cardList\"]/div[1]/div[2]/button[1]");
+        Thread.sleep(1000);
+        assertTrue(deleteButton.isDisplayed());
     }
+
+    @Test
+    public void deleteTest() throws InterruptedException {
+        driver.get("http://34.89.69.35/index.html");
+        Thread.sleep(1000); //This keeps the window open for 2 seconds before closing it
+        WebElement deleteButton = driver.findElementByXPath("//*[@id=\"cardList\"]/div[1]/div[2]/button[1]");
+        Thread.sleep(1000);
+        deleteButton.click();
+        Thread.sleep(1000);
+    }
+
+
 
 
 }
